@@ -1,0 +1,31 @@
+# i18n/fa.yaml
+- id: prevpage
+  translation: "← صفحه قبلی"
+
+- id: nextpage
+  translation: "صفحه بعدی →"
+
+- id: nojscomments
+  translation: "لطفاً جاوا اسکریپت را برای بارگذاری نظرات فعال کنید."
+
+- id: 404title
+  translation: "خطای HTTP-404"
+
+- id: 404text
+  translation: "محتوایی اینجا وجود ندارد."
+
+- id: minutes
+  translation: "دقیقه"
+
+- id: words
+  translation: "واژه"
+
+- id: Posts
+  translation: "نوشته‌ها"
+
+- id: Tags
+  translation: "برچسب‌ها"
+
+- id: Categories
+  translation: "دسته بندی‌ها"
+
