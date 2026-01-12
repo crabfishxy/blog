@@ -41,7 +41,7 @@ Confidentiality, Integrity, Authenticity
 
 通过数字签名的形式。为了防止信息被篡改，提供数据的一方需要用私钥来对数据的hash进行加密，接受数据的一方用公钥来解密签名，对比数据的hash
 
-![Untitled](Blogs/HTTPS-myth/integrity.png)
+![Untitled](Blogs/HTTPS-myth-images/integrity.png)
 
 - 如何保证Authenticity（真实性）？
 
@@ -63,7 +63,7 @@ Confidentiality, Integrity, Authenticity
 
 证书就类似于网站的身份证，让网站证明和当前客户端进行通信的服务器属于这个网站。比如我现在正在使用notion撰写这篇文章，就以notion的证书为例：
 
-![Untitled](Blogs/HTTPS-myth/cert.png)
+![Untitled](Blogs/HTTPS-myth-images/cert.png)
 
 可以看到证书包含了notion.so这一域名的基本信息，包括地区，证书有效期等等。同时，我们也可以看到证书中包含了notion的公钥。可是这些信息其实不足以证明我们在和真正的notion域名持有者在沟通，因为任何一个中间人攻击者都可以提供这些伪造的信息。
 
@@ -75,7 +75,7 @@ Confidentiality, Integrity, Authenticity
 
 倒着梳理一下刚才的顺序的话，就是Baltimo CyberTrust Root和Cloudflare达成了公式，颁布了证书给CloudFlare，用自己的私钥给CloudFlare证书进行了签名，而Cloudflare给notion做了签名，而我们因为浏览器信任了Bltimo，也因此新人了Cloudflare，信任了notion，一个信任链就此达成
 
-![Untitled](Blogs/HTTPS-myth/trust-chain.png)
+![Untitled](Blogs/HTTPS-myth-images/trust-chain.png)
 
 当然，用户其实也可以自己选择信任其他的根证书，这就类似于尽管银行、手机支付app有各种安全的保障措施（密码、指纹、短信），但用户如果自己选择冒风险（比如相信诈骗电话），那么不管这些措施多么安全，其实都没有什么用。因此不管是在互联网还是现实生活，都需要有足够的安全意识才行。
 
@@ -90,9 +90,9 @@ Confidentiality, Integrity, Authenticity
 
 国内的很多云服务商其实已经提供了这一功能，但我更推荐你使用[Let's Encrypt](https://letsencrypt.org/zh-cn/how-it-works/)，它提供了一套自动、省心的证书自动签发机制。这是LetsEncrypt的运作机制：
 
-![Untitled](Blogs/HTTPS-myth/enc.png)
+![Untitled](Blogs/HTTPS-myth-images/enc.png)
 
-![Untitled](Blogs/HTTPS-myth/enc2.png)
+![Untitled](Blogs/HTTPS-myth-images/enc2.png)
 
 1. 首先，Let's Encrypt需要服务器安装支持Let's Encrypt的证书管理软件。然后由证书管理软件来与Let's Encrypt交互。Let's Encrypt首先需要服务器生成一对密钥（注意，这对密钥和服务器与客户端交互的密钥不一样，是另一对独立生成的），然后要求服务器用私钥加密由Let's Encrypt提供的Nonce（可以简单理解成随机值）并返回加密后的密文与公钥给Let's Encrypt，由Let's Encrypt用公钥解密认证
 2. Let's Encrypt要求服务器在指定路径下放置一个文件，然后验证这一文件。这一步是为了验证正在交互的服务器拥有对于这一域名的控制权。
