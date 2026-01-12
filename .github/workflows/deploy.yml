@@ -1,4 +1,4 @@
-name: Build and Deploy Hugo Blog
+name: Build and Deploy Quartz Blog
 
 on:
   push:
@@ -8,22 +8,23 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: true  # 如果主题是 submodule
-          fetch-depth: 0    # 获取完整历史，Hugo 需要用于 lastmod
+          fetch-depth: 0    # 获取完整历史，用于 git info
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          hugo-version: 'latest'
-          extended: true
+          node-version: '22'
 
-      - name: Build site
-        run: hugo --minify
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Quartz
+        run: npx quartz build
 
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@main

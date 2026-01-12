@@ -1,20 +1,11 @@
-# Hugo 生成的文件 (GitHub Actions 会在服务器构建)
-/public/
-/resources/_gen/
-
-# Hugo 本地服务器锁文件
-/.hugo_build.lock
-
-# 操作系统文件
 .DS_Store
-Thumbs.db
-
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# 部署相关
-.env
-*.log
+.gitignore
+node_modules
+public
+prof
+tsconfig.tsbuildinfo
+.obsidian
+.quartz-cache
+private/
+.replit
+replit.nix
