@@ -9,3 +9,18 @@ tsconfig.tsbuildinfo
 private/
 .replit
 replit.nix
+
+# Hugo
+hugo.toml
+hugo.yaml
+hugo.yml
+config.toml
+config.yaml
+config.yml
+.hugo_build.lock
+archetypes/
+layouts/
+data/
+i18n/
+resources/
+themes/
